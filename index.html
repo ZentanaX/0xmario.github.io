@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ชัยวัฒน์ ศรีสุข | นักพัฒนาเว็บไซต์</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Noto+Sans+Thai:wght@300;400;500&amp;display=swap');
+        
+        body {
+            font-family: 'Inter', 'Noto Sans Thai', system-ui, sans-serif;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            border-radius: 3px;
+        }
+        
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link:hover {
+            color: #6366f1;
+            transform: translateY(-1px);
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: scale(1.05);
+            background-color: #6366f1;
+            color: white;
+            border-color: #6366f1;
+        }
+        
+        .glass {
+            background: rgba(255,255,255, 0.05);
+            backdrop-filter: blur(12px);
+        }
+        
+        .hero-bg {
+            background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+        }
+        
+        .prose p {
+            margin-bottom: 1.25rem;
+        }
+        
+        .prose h3 {
+            color: white;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-zinc-800">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">CS</span>
+                </div>
+                <div>
+                    <span class="font-semibold text-xl tracking-tight">ชัยวัฒน์ ศรีสุข</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-x-8 text-sm">
+                <a href="#about" class="nav-link text-zinc-400 hover:text-white">เกี่ยวกับฉัน</a>
+                <a href="#skills" class="nav-link text-zinc-400 hover:text-white">ทักษะ</a>
+                <a href="#projects" class="nav-link text-zinc-400 hover:text-white">ผลงาน</a>
+                <a href="#contact" class="nav-link text-zinc-400 hover:text-white">ติดต่อ</a>
+            </div>
+            
+            <div class="flex items-center gap-x-3">
+                <a href="https://github.com" target="_blank" 
+                   class="px-4 py-2 text-sm border border-zinc-700 hover:bg-zinc-800 rounded-full transition-colors flex items-center gap-x-2">
+                    <i class="fab fa-github"></i>
+                    <span class="hidden md:inline">GitHub</span>
+                </a>
+                
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+                        class="px-5 py-2.5 bg-white text-zinc-950 hover:bg-zinc-100 text-sm font-medium rounded-full transition-all active:scale-95 flex items-center gap-x-2">
+                    <span>ติดต่อฉัน</span>
+                </button>
+                
+                <!-- Mobile menu button -->
+                <button class="md:hidden w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-[100dvh] flex items-center pt-16 hero-bg relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-x-2 bg-zinc-900 border border-zinc-800 px-4 py-1.5 rounded-full mb-6 text-sm">
+                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span class="text-emerald-400 font-medium">พร้อมรับงานฟรีแลนซ์</span>
+            </div>
+            
+            <h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-6 leading-none">
+                สวัสดีครับ,<br>ผมคือ <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">ชัยวัฒน์ ศรีสุข</span>
+            </h1>
+            
+            <p class="max-w-lg mx-auto text-xl text-zinc-400 mb-10">
+                นักพัฒนาเว็บ Full-Stack ที่หลงใหลในการสร้างประสบการณ์ดิจิทัลที่สวยงามและมีประสิทธิภาพ
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })" 
+                        class="group px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-2xl flex items-center justify-center gap-x-3 transition-all active:scale-[0.985]">
+                    <span>อ่านเรื่องราวการสร้างเว็บนี้</span>
+                    <i class="fas fa-arrow-down group-active:translate-y-0.5 transition-transform"></i>
+                </button>
+                
+                <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" 
+                        class="px-8 py-4 border border-zinc-700 hover:bg-zinc-900 text-white font-medium rounded-2xl flex items-center gap-x-2 transition-all">
+                    <span>ดูผลงานทั้งหมด</span>
+                </button>
+            </div>
+            
+            <div class="mt-16 flex justify-center">
+                <div class="flex items-center gap-x-8 text-sm text-zinc-500">
+                    <div class="flex -space-x-2">
+                        <div class="w-7 h-7 bg-zinc-700 rounded-full ring-2 ring-zinc-950"></div>
+                        <div class="w-7 h-7 bg-zinc-600 rounded-full ring-2 ring-zinc-950"></div>
+                        <div class="w-7 h-7 bg-zinc-500 rounded-full ring-2 ring-zinc-950"></div>
+                    </div>
+                    <span>เชื่อถือโดยนักพัฒนา 120+ คน</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <span class="text-xs tracking-[3px] text-zinc-500 mb-2">SCROLL TO EXPLORE</span>
+            <div class="w-px h-10 bg-gradient-to-b from-transparent via-zinc-700 to-transparent"></div>
+        </div>
+    </header>
+
+    <!-- About Section with the article -->
+    <section id="about" class="max-w-4xl mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <span class="text-indigo-400 text-sm font-semibold tracking-widest">CHAPTER 01</span>
+            <h2 class="text-4xl font-bold tracking-tight mt-2 section-title">แนะนำตัวเอง &amp; เรื่องราวการสร้างหน้านี้</h2>
+        </div>
+        
+        <div class="prose prose-invert max-w-none text-lg leading-relaxed text-zinc-300">
+            <p class="text-xl font-light mb-8">สวัสดีครับทุกคน! ผมชื่อ <strong class="text-white">ชัยวัฒน์ ศรีสุข</strong> นักพัฒนาเว็บอิสระและนักออกแบบ UI/UX ที่อาศัยและทำงานอยู่ในกรุงเทพมหานคร</p>
+            
+            <p>ผมเริ่มต้นเส้นทางในการสร้างเว็บไซต์ตั้งแต่ปี พ.ศ. 2563 โดยเริ่มจากความสนใจในการเขียนโค้ด HTML และ CSS ธรรมดา ๆ เพียงเพื่อสร้างบล็อกส่วนตัว จนกระทั่งพัฒนามาเป็นมืออาชีพที่สามารถรับงานสร้างเว็บไซต์เต็มรูปแบบให้กับลูกค้าและธุรกิจต่าง ๆ</p>
+            
+            <h3 class="text-white text-2xl font-semibold mt-10 mb-4">ทำไมถึงสร้างหน้านี้ขึ้นมา?</h3>
+            <p>เว็บเพจนี้ถูกสร้างขึ้นเพื่อเป็นทั้ง <strong>พอร์ตโฟลิโอส่วนตัว</strong> และ <strong>ตัวอย่างการทำงาน</strong> ของผม โดยมีวัตถุประสงค์หลักคือการแสดงให้เห็นถึงทักษะในการพัฒนาเว็บไซต์ที่ตอบโจทย์ทั้งด้านความสวยงาม ความเร็ว และความใช้งานง่าย</p>
+            
+            <h3 class="text-white text-2xl font-semibold mt-10 mb-4">กระบวนการสร้างหน้านี้</h3>
+            
+            <div class="grid md:grid-cols-2 gap-6 my-8">
+                <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-3xl">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="w-9 h-9 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <span class="font-semibold">1. การออกแบบ</span>
+                    </div>
+                    <p class="text-sm text-zinc-400">ผมเลือกใช้ธีมมืด (Dark Mode) เพราะให้ความรู้สึกทันสมัย มืออาชีพ และสบายตา โดยเฉพาะผู้ที่ทำงานหน้าจอเป็นเวลานาน ใช้สี accent เป็น Indigo และ Purple เพื่อสร้างความรู้สึกพลังและสร้างสรรค์</p>
+                </div>
+                
+                <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-3xl">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="w-9 h-9 bg-violet-500/10 text-violet-400 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <span class="font-semibold">2. โครงสร้าง &amp; เทคโนโลยี</span>
+                    </div>
+                    <p class="text-sm text-zinc-400">ใช้ HTML5 Semantic Elements ร่วมกับ Tailwind CSS ผ่าน CDN เพื่อพัฒนาได้รวดเร็วและได้ผลลัพธ์ที่สวยงามทันที ทุกส่วนถูกออกแบบให้ Responsive อย่างสมบูรณ์แบบ</p>
+                </div>
+            </div>
+            
+            <p>เนื้อหาหลักของเว็บเพจนี้คือบทความที่คุณกำลังอ่านอยู่นี่เอง ซึ่งถูกเขียนขึ้นเพื่อเล่าเรื่องการสร้างหน้านี้โดยตรง (เป็นการเล่าแบบ meta นิด ๆ) เพื่อให้ผู้เข้าชมได้เห็นถึงกระบวนการคิด การวางแผน และการลงมือทำจริง</p>
+            
+            <div class="my-8 p-6 bg-zinc-900 border-l-4 border-indigo-500 rounded-r-3xl">
+                <p class="italic text-zinc-400">"การสร้างเว็บไซต์ที่ดีไม่ได้จบลงที่การเขียนโค้ดให้รันได้ แต่ต้องทำให้ผู้ใช้รู้สึกถึงความใส่ใจในทุกรายละเอียด"</p>
+            </div>
+            
+            <h3 class="text-white text-2xl font-semibold mt-10 mb-4">สิ่งที่ผมได้เรียนรู้จากการสร้างหน้านี้</h3>
+            <ul class="space-y-3 text-zinc-300">
+                <li class="flex gap-x-3"><span class="text-indigo-400 mt-1.5">•</span> <span>ความสำคัญของการออกแบบที่สอดคล้องกับตัวตนของผู้สร้าง — ธีมมืดสะท้อนถึงสไตล์การทำงานของผมที่ชอบความสงบและโฟกัส</span></li>
+                <li class="flex gap-x-3"><span class="text-indigo-400 mt-1.5">•</span> <span>การใช้ Tailwind CSS ช่วยลดเวลาในการเขียน CSS ได้มากกว่า 60% และทำให้โค้ดสะอาด อ่านง่าย</span></li>
+                <li class="flex gap-x-3"><span class="text-indigo-400 mt-1.5">•</span> <span>การเขียนเนื้อหาที่น่าสนใจและเป็นประโยชน์ต่อผู้อ่านสำคัญไม่แพ้โค้ดเลย — เพราะเว็บไซต์ที่ดีต้องมีทั้งเนื้อหาและดีไซน์ที่ยอดเยี่ยม</span></li>
+            </ul>
+            
+            <p class="mt-8">หวังว่าทุกคนที่ได้อ่านและชมเว็บเพจนี้จะได้รับแรงบันดาลใจในการสร้างสรรค์ผลงานของตัวเองบ้างนะครับ! ถ้าชอบหรือมีคำแนะนำใด ๆ สามารถติดต่อผมได้ผ่านช่องทางด้านล่างเลยครับ 😊</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-zinc-900 py-20 border-y border-zinc-800">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-indigo-400 text-sm font-semibold tracking-widest">CHAPTER 02</span>
+                <h2 class="text-4xl font-bold tracking-tight mt-2">ทักษะและเครื่องมือที่ผมเชี่ยวชาญ</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="skill-badge bg-zinc-950 border border-zinc-800 px-5 py-4 rounded-3xl flex items-center gap-x-4 group cursor-pointer">
+                    <i class="fab fa-html5 text-orange-400 text-3xl group-hover:scale-110 transition-transform"></i>
+                    <div>
+                        <div class="font-semibold">HTML5</div>
+                        <div class="text-xs text-zinc-500">Semantic &amp; Accessible</div>
+                    </div>
+                </div>
+                
+                <div class="skill-badge bg-zinc-950 border border-zinc-800 px-5 py-4 rounded-3xl flex items-center gap-x-4 group cursor-pointer">
+                    <i class="fab fa-css3-alt text-blue-400 text-3xl group-hover:scale-110 transition-transform"></i>
+                    <div>
+                        <div class="font-semibold">CSS3 &amp; Tailwind</div>
+                        <div class="text-xs text-zinc-500">Responsive Design</div>
+                    </div>
+                </div>
+                
+                <div class="skill-badge bg-zinc-950 border border-zinc-800 px-5 py-4 rounded-3xl flex items-center gap-x-4 group cursor-pointer">
+                    <i class="fab fa-js text-yellow-400 text-3xl group-hover:scale-110 transition-transform"></i>
+                    <div>
+                        <div class="font-semibold">JavaScript</div>
+                        <div class="text-xs text-zinc-500">ES6+ &amp; DOM</div>
+                    </div>
+                </div>
+                
+                <div class="skill-badge bg-zinc-950 border border-zinc-800 px-5 py-4 rounded-3xl flex items-center gap-x-4 group cursor-pointer">
+                    <i class="fab fa-react text-cyan-400 text-3xl group-hover:scale-110 transition-transform"></i>
+                    <div>
+                        <div class="font-semibold">React &amp; Next.js</div>
+                        <div class="text-xs text-zinc-500">Modern Frontend</div>
+                    </div>
+                </div>
+                
+                <div class="skill-badge bg-zinc-950 border border-zinc-800 px-5 py-4 rounded-3xl flex items-center gap-x-4 group cursor-pointer">
+                    <i class="fas fa-palette text-pink-400 text-3xl group-hover:scale-110 transition-transform"></i>
+                    <div>
+                        <div class="font-semibold">Figma &amp; UI/UX</div>
+                        <div class="text-xs text-zinc-500">Design Systems</div>
+                    </div>
+                </div>
+                
+                <div class="skill-badge bg-zinc-950 border border-zinc-800 px-5 py-4 rounded-3xl flex items-center gap-x-4 group cursor-pointer">
+                    <i class="fab fa-git-alt text-red-400 text-3xl group-hover:scale-110 transition-transform"></i>
+                    <div>
+                        <div class="font-semibold">Git &amp; GitHub</div>
+                        <div class="text-xs text-zinc-500">Version Control</div>
+                    </div>
+                </div>
+                
+                <div class="skill-badge bg-zinc-950 border border-zinc-800 px-5 py-4 rounded-3xl flex items-center gap-x-4 group cursor-pointer">
+                    <i class="fas fa-server text-emerald-400 text-3xl group-hover:scale-110 transition-transform"></i>
+                    <div>
+                        <div class="font-semibold">Node.js &amp; Express</div>
+                        <div class="text-xs text-zinc-500">Backend Development</div>
+                    </div>
+                </div>
+                
+                <div class="skill-badge bg-zinc-950 border border-zinc-800 px-5 py-4 rounded-3xl flex items-center gap-x-4 group cursor-pointer">
+                    <i class="fas fa-mobile-alt text-purple-400 text-3xl group-hover:scale-110 transition-transform"></i>
+                    <div>
+                        <div class="font-semibold">Responsive Design</div>
+                        <div class="text-xs text-zinc-500">Mobile First</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="max-w-5xl mx-auto px-6 py-20">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+            <div>
+                <span class="text-indigo-400 text-sm font-semibold tracking-widest">CHAPTER 03</span>
+                <h2 class="text-4xl font-bold tracking-tight mt-2">ผลงานที่ผ่านมา</h2>
+            </div>
+            <a href="https://github.com" target="_blank" class="mt-4 md:mt-0 inline-flex items-center text-sm text-indigo-400 hover:text-indigo-300 group">
+                ดูผลงานทั้งหมดใน GitHub 
+                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+            </a>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Project 1: This page -->
+            <div class="project-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group">
+                <div class="h-48 bg-gradient-to-br from-indigo-950 to-zinc-900 flex items-center justify-center relative">
+                    <div class="text-center">
+                        <i class="fas fa-user text-5xl text-indigo-400 mb-3 opacity-80"></i>
+                        <div class="text-xs uppercase tracking-widest text-indigo-400/70">PERSONAL PROJECT</div>
+                    </div>
+                    <div class="absolute top-4 right-4 px-3 py-1 bg-black/60 text-xs rounded-full">2026</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-xl mb-2 group-hover:text-indigo-400 transition-colors">เว็บพอร์ตโฟลิโอส่วนตัว (หน้านี้)</h3>
+                    <p class="text-sm text-zinc-400 line-clamp-3 mb-4">เว็บไซต์ที่คุณกำลังชมอยู่นี่เอง สร้างด้วย HTML5, Tailwind CSS และ JavaScript เพื่อแสดงตัวตนและเล่าเรื่องการสร้างเว็บ</p>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-x-1.5">
+                            <span class="text-[10px] px-2 py-0.5 bg-zinc-800 rounded">HTML</span>
+                            <span class="text-[10px] px-2 py-0.5 bg-zinc-800 rounded">Tailwind</span>
+                            <span class="text-[10px] px-2 py-0.5 bg-zinc-800 rounded">JS</span>
+                        </div>
+                        <a href="#" class="text-xs font-medium flex items-center gap-x-1 text-indigo-400 hover:underline">ดูเดโม <i class="fas fa-external-link-alt text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group">
+                <div class="h-48 bg-gradient-to-br from-amber-950 to-zinc-900 flex items-center justify-center relative">
+                    <div class="text-center">
+                        <i class="fas fa-utensils text-5xl text-amber-400 mb-3 opacity-80"></i>
+                        <div class="text-xs uppercase tracking-widest text-amber-400/70">CLIENT PROJECT</div>
+                    </div>
+                    <div class="absolute top-4 right-4 px-3 py-1 bg-black/60 text-xs rounded-full">2024</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-xl mb-2 group-hover:text-indigo-400 transition-colors">เว็บร้านอาหาร "บ้านสวน"</h3>
+                    <p class="text-sm text-zinc-400 line-clamp-3 mb-4">เว็บไซต์สำหรับร้านอาหารไทยสไตล์บ้าน ๆ พร้อมระบบจองโต๊ะออนไลน์และเมนูดิจิทัล</p>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-x-1.5">
+                            <span class="text-[10px] px-2 py-0.5 bg-zinc-800 rounded">Next.js</span>
+                            <span class="text-[10px] px-2 py-0.5 bg-zinc-800 rounded">Tailwind</span>
+                            <span class="text-[10px] px-2 py-0.5 bg-zinc-800 rounded">Supabase</span>
+                        </div>
+                        <a href="#" class="text-xs font-medium flex items-center gap-x-1 text-indigo-400 hover:underline">ดูเดโม <i class="fas fa-external-link-alt text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group">
+                <div class="h-48 bg-gradient-to-br from-emerald-950 to-zinc-900 flex items-center justify-center relative">
+                    <div class="text-center">
+                        <i class="fas fa-chart-line text-5xl text-emerald-400 mb-3 opacity-80"></i>
+                        <div class="text-xs uppercase tracking-widest text-emerald-400/70">INTERNAL TOOL</div>
+                    </div>
+                    <div class="absolute top-4 right-4 px-3 py-1 bg-black/60 text-xs rounded-full">2024</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-xl mb-2 group-hover:text-indigo-400 transition-colors">แดชบอร์ดวิเคราะห์ยอดขาย</h3>
+                    <p class="text-sm text-zinc-400 line-clamp-3 mb-4">ระบบแดชบอร์ดสำหรับธุรกิจ SME ใช้แสดงข้อมูลยอดขาย แนวโน้ม และรายงานแบบเรียลไทม์</p>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-x-1.5">
+                            <span class="text-[10px] px-2 py-0.5 bg-zinc-800 rounded">React</span>
+                            <span class="text-[10px] px-2 py-0.5 bg-zinc-800 rounded">Chart.js</span>
+                            <span class="text-[10px] px-2 py-0.5 bg-zinc-800 rounded">Node</span>
+                        </div>
+                        <a href="#" class="text-xs font-medium flex items-center gap-x-1 text-indigo-400 hover:underline">ดูเดโม <i class="fas fa-external-link-alt text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="max-w-3xl mx-auto px-6 py-20 border-t border-zinc-800">
+        <div class="text-center mb-12">
+            <span class="text-indigo-400 text-sm font-semibold tracking-widest">CHAPTER 04</span>
+            <h2 class="text-4xl font-bold tracking-tight mt-2">มาสร้างสิ่งดี ๆ ด้วยกัน</h2>
+            <p class="mt-3 text-zinc-400 max-w-md mx-auto">พร้อมรับงานฟรีแลนซ์และโครงการใหม่ ๆ อยู่เสมอ</p>
+        </div>
+        
+        <div class="grid md:grid-cols-5 gap-8">
+            <!-- Contact Info -->
+            <div class="md:col-span-2 space-y-8">
+                <div>
+                    <div class="text-sm text-zinc-500 mb-2">EMAIL</div>
+                    <a href="mailto:chaiwat.s@email.com" class="text-lg hover:text-indigo-400 transition-colors">chaiwat.s@email.com</a>
+                </div>
+                
+                <div>
+                    <div class="text-sm text-zinc-500 mb-2">LINE ID</div>
+                    <div class="text-lg">chaiwat.dev</div>
+                </div>
+                
+                <div>
+                    <div class="text-sm text-zinc-500 mb-3">FOLLOW ME</div>
+                    <div class="flex gap-x-4 text-2xl">
+                        <a href="https://github.com" target="_blank" class="hover:text-indigo-400 transition-colors"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" class="hover:text-indigo-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank" class="hover:text-indigo-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="hover:text-indigo-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="md:col-span-3">
+                <form id="contact-form" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="text-xs text-zinc-500 block mb-1.5">ชื่อของคุณ</label>
+                            <input type="text" class="w-full bg-zinc-900 border border-zinc-800 focus:border-indigo-500 rounded-2xl px-5 py-3 text-sm outline-none" placeholder="ชื่อ-นามสกุล" required>
+                        </div>
+                        <div>
+                            <label class="text-xs text-zinc-500 block mb-1.5">อีเมล</label>
+                            <input type="email" class="w-full bg-zinc-900 border border-zinc-800 focus:border-indigo-500 rounded-2xl px-5 py-3 text-sm outline-none" placeholder="you@email.com" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="text-xs text-zinc-500 block mb-1.5">หัวข้อ</label>
+                        <input type="text" class="w-full bg-zinc-900 border border-zinc-800 focus:border-indigo-500 rounded-2xl px-5 py-3 text-sm outline-none" placeholder="อยากสร้างเว็บอะไรด้วยกัน" required>
+                    </div>
+                    
+                    <div>
+                        <label class="text-xs text-zinc-500 block mb-1.5">รายละเอียด</label>
+                        <textarea rows="4" class="w-full resize-y min-h-[120px] bg-zinc-900 border border-zinc-800 focus:border-indigo-500 rounded-3xl px-5 py-3 text-sm outline-none" placeholder="เล่าให้ฟังหน่อยว่าอยากได้เว็บแบบไหน..."></textarea>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-2xl transition-all flex items-center justify-center gap-x-2 active:scale-[0.985]">
+                        <span>ส่งข้อความ</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    
+                    <p class="text-center text-xs text-zinc-500">ผมจะตอบกลับภายใน 24 ชั่วโมง</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-zinc-800 py-10">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-zinc-500 gap-y-4">
+            <div>© 2026 ชัยวัฒน์ ศรีสุข. สร้างด้วย ❤️ และโค้ดที่สะอาด</div>
+            <div class="flex items-center gap-x-6">
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <span class="text-xs">Made with Tailwind + HTML</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind configuration
+        function initializeTailwind() {
+            // Any additional Tailwind config if needed
+        }
+        
+        // Mobile menu functionality
+        function setupMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            if (!btn) return;
+            
+            btn.addEventListener('click', () => {
+                const nav = document.querySelector('nav');
+                let mobileMenu = document.getElementById('mobile-menu');
+                
+                if (!mobileMenu) {
+                    mobileMenu = document.createElement('div');
+                    mobileMenu.id = 'mobile-menu';
+                    mobileMenu.className = 'md:hidden absolute top-full left-0 right-0 bg-zinc-950 border-t border-zinc-800 px-6 py-8 flex flex-col gap-y-4 text-sm';
+                    mobileMenu.innerHTML = `
+                        <a href="#about" class="py-2 text-zinc-400 hover:text-white">เกี่ยวกับฉัน</a>
+                        <a href="#skills" class="py-2 text-zinc-400 hover:text-white">ทักษะ</a>
+                        <a href="#projects" class="py-2 text-zinc-400 hover:text-white">ผลงาน</a>
+                        <a href="#contact" class="py-2 text-zinc-400 hover:text-white">ติดต่อ</a>
+                    `;
+                    nav.appendChild(mobileMenu);
+                }
+                
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+            });
+        }
+        
+        // Contact form handler with nice animation
+        function setupContactForm() {
+            const form = document.getElementById('contact-form');
+            if (!form) return;
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                
+                btn.innerHTML = '<span>กำลังส่ง...</span> <i class="fas fa-spinner fa-spin ml-2"></i>';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<span>ส่งสำเร็จ! 🎉</span>';
+                    btn.style.background = 'linear-gradient(to right, #10b981, #059669)';
+                    
+                    setTimeout(() => {
+                        form.reset();
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                        btn.style.background = 'linear-gradient(to right, #6366f1, #a855f7)';
+                        
+                        // Success toast
+                        const toast = document.createElement('div');
+                        toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-6 py-3.5 rounded-2xl flex items-center gap-x-3 shadow-2xl text-sm font-medium';
+                        toast.style.zIndex = '9999';
+                        toast.innerHTML = `
+                            <i class="fas fa-check-circle text-lg"></i> 
+                            <span>ขอบคุณครับ! ผมจะติดต่อกลับภายใน 24 ชั่วโมง</span>
+                        `;
+                        document.body.appendChild(toast);
+                        
+                        setTimeout(() => {
+                            toast.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 1, 1)';
+                            toast.style.opacity = '0';
+                            toast.style.transform = 'translate(-50%, 30px)';
+                            
+                            setTimeout(() => {
+                                toast.remove();
+                            }, 400);
+                        }, 3000);
+                    }, 1800);
+                }, 1400);
+            });
+        }
+        
+        // Navbar scroll effect
+        function setupNavbar() {
+            const nav = document.querySelector('nav');
+            if (!nav) return;
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 80) {
+                    nav.style.background = 'rgba(9, 9, 11, 0.96)';
+                    nav.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1)';
+                } else {
+                    nav.style.background = 'rgba(255,255,255, 0.05)';
+                    nav.style.boxShadow = 'none';
+                }
+            });
+        }
+        
+        // Smooth scroll for anchor links
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    const target = document.querySelector(href);
+                    
+                    if (target) {
+                        e.preventDefault();
+                        
+                        const offset = 80;
+                        const bodyRect = document.body.getBoundingClientRect().top;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition - bodyRect - offset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        const mobileMenu = document.getElementById('mobile-menu');
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenu.classList.remove('flex');
+                        }
+                    }
+                });
+            });
+        }
+        
+        // Keyboard shortcut hint in console
+        function addEasterEgg() {
+            console.log('%c[Portfolio] สร้างด้วยความรักโดยชัยวัฒน์ ศรีสุข — ลองกดปุ่ม "ติดต่อฉัน" เพื่อดู animation น่ารัก ๆ', 'color: #64748b; font-size: 10px');
+        }
+        
+        // Initialize all features
+        function init() {
+            initializeTailwind();
+            setupMobileMenu();
+            setupContactForm();
+            setupNavbar();
+            setupSmoothScroll();
+            addEasterEgg();
+            
+            // Welcome animation for hero (optional subtle effect)
+            setTimeout(() => {
+                const hero = document.querySelector('header');
+                if (hero) hero.style.transition = 'opacity 0.6s ease';
+            }, 100);
+        }
+        
+        window.onload = init;
+    </script>
+</body>
+</html>
